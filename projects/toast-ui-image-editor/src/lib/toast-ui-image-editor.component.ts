@@ -43,6 +43,10 @@ const editorDefaultOptions: IOptions = {
   cssMaxHeight: 500
 };
 
+interface IImageEditor extends ImageEditor {
+  off(eventName: string): void;
+}
+
 @Component({
   selector: "tui-image-editor",
   template: `
@@ -87,6 +91,7 @@ export class ToastUiImageEditorComponent implements AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.removeEventListeners();
     this.editorInstance.destroy();
   }
 
@@ -115,5 +120,16 @@ export class ToastUiImageEditorComponent implements AfterViewInit, OnDestroy {
     this.editorInstance.on(editorEvents.undoStackChanged, event =>
       this.undoStackChanged.emit(event)
     );
+  }
+
+  private removeEventListeners() {
+    (<IImageEditor>this.editorInstance).off(editorEvents.addText);
+    (<IImageEditor>this.editorInstance).off(editorEvents.mousedown);
+    (<IImageEditor>this.editorInstance).off(editorEvents.objectActivated);
+    (<IImageEditor>this.editorInstance).off(editorEvents.objectMoved);
+    (<IImageEditor>this.editorInstance).off(editorEvents.objectScaled);
+    (<IImageEditor>this.editorInstance).off(editorEvents.redoStackChanged);
+    (<IImageEditor>this.editorInstance).off(editorEvents.textEditing);
+    (<IImageEditor>this.editorInstance).off(editorEvents.undoStackChanged);
   }
 }

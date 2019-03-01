@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "toast-ui-image-editor": {
+      "root": "projects/toast-ui-image-editor",
+      "sourceRoot": "projects/toast-ui-image-editor/src",
+      "projectType": "library",
+      "prefix": "tui",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/toast-ui-image-editor/tsconfig.lib.json",
+            "project": "projects/toast-ui-image-editor/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/toast-ui-image-editor/src/test.ts",
+            "tsConfig": "projects/toast-ui-image-editor/tsconfig.spec.json",
+            "karmaConfig": "projects/toast-ui-image-editor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/toast-ui-image-editor/tsconfig.lib.json",
+              "projects/toast-ui-image-editor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "toast-ui-image-editor-demo"

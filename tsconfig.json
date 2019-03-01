@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "toast-ui-image-editor": [
+        "dist/toast-ui-image-editor"
+      ],
+      "toast-ui-image-editor/*": [
+        "dist/toast-ui-image-editor/*"
+      ]
+    }
   }
 }

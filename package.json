@@ -1,5 +1,5 @@
 {
-  "name": "toast-ui-image-editor-demo",
+  "name": "ngx-tui-image-editor",
   "version": "0.0.1",
   "description": "A simple Angular6+ wrapper for TOAST UI Image Editor",
   "author": { "name": "Joshua Washke" },

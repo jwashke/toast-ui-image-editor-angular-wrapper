@@ -67,6 +67,7 @@ const options = {
     ...
     usageStatistics: false
 }
+```
 
 #### includeUI - boolean
 *Default:*
@@ -83,6 +84,7 @@ Eight outputs that correspond to the events in the [TOAST UI Image Editor events
 ### Accessing the editor directly.
 
 The editor instance is a public variable on the component, and can be accessed directly using the Angular ViewChild property.
+
 ```js
 import { Component, ViewChild, AfterViewInit } from "@angular/core";
 import { ToastUiImageEditorComponent } from 'toast-ui-image-editor';

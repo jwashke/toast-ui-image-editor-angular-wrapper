@@ -1,13 +1,18 @@
 {
   "name": "ngx-tui-image-editor",
-  "version": "6.0.1",
+  "version": "7.0.0",
   "description": "A simple Angular6+ wrapper for TOAST UI Image Editor",
-  "author": { "name": "Joshua Washke" },
-  "repository": { "type": "git", "url": "https://github.com/jwashke/toast-ui-image-editor-angular-wrapper"},
+  "author": {
+    "name": "Joshua Washke"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwashke/toast-ui-image-editor-angular-wrapper"
+  },
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+    "@angular/common": "^7.2.7",
+    "@angular/core": "^7.2.7"
   },
   "dependencies": {},
   "devDependencies": {}

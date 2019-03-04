@@ -11,6 +11,11 @@ Based with ❤️ on [Toast UI Image Editor for Vue](https://github.com/nhnent/t
 npm install --save ngx-tui-image-editor
 ```
 
+> **If you install other packages**, you may lose dependency on fabric. You need to **reinstall the fabric**.  
+    ```sh
+    npm install --no-save --no-optional fabric@~1.6.7
+    ```
+
 ## Use
 
 ### Import the module
@@ -53,6 +58,15 @@ The image editor will default to 100% height and width of its container. So defi
 ```
 
 An options object passed directly to the Image Editor on initializaiton. For usage, reference the options parameter defined in the constructor in the [TOAST UI Image Editor docs](https://nhnent.github.io/tui.image-editor/latest/ImageEditor.html)
+
+Per [TOAST UI Image Editor for Vue](https://github.com/nhnent/toast-ui.vue-image-editor)
+> TOAST UI ImageEditor applies Google Analytics (GA) to collect statistics on the use of open source, in order to identify how widely TOAST UI ImageEditor is used throughout the world. It also serves as important index to determine the future course of projects. location.hostname (e.g. > “ui.toast.com") is to be collected and the sole purpose is nothing but to measure statistics on the usage. To disable GA, use the following `usageStatistics` option when creating the instance.
+
+```js
+const options = {
+    ...
+    usageStatistics: false
+}
 
 #### includeUI - boolean
 *Default:*

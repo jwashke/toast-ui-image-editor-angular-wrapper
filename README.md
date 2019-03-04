@@ -1,27 +1,88 @@
-# TOAST UI Image Editor Angular Wrapper
+# Angular Wrapper for TOAST UI Image Editor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.8.
+An Angular Component wrapping [TOAST UI Image Editor](https://github.com/nhnent/tui.image-editor).
 
-## Development server
+Based with ❤️ on [Toast UI Image Editor for Vue](https://github.com/nhnent/toast-ui.vue-image-editor).
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+*With npm*
+```sh
+npm install --save ngx-tui-image-editor
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Use
 
-## Build
+### Import the module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```js
+import { BrowserModule } from "@angular/platform-browser";
+import { NgModule } from "@angular/core";
 
-## Running unit tests
+import { AppComponent } from "./app.component";
+import { ToastUiImageEditorModule } from "toast-ui-image-editor";
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, ToastUiImageEditorModule],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+```
 
-## Running end-to-end tests
+### Use the component
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+The image editor will default to 100% height and width of its container. So define the height and width you want on the wrapping element.
 
-## Further help
+```html
+  <div style="height: 500px; width: 100%">
+    <tui-image-editor></tui-image-editor>
+  </div>
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Inputs
+
+#### options - object
+*Default:* 
+```js 
+{
+  cssMaxWidth: 700,
+  cssMaxHeight: 500
+};
+```
+
+An options object passed directly to the Image Editor on initializaiton. For usage, reference the options parameter defined in the constructor in the [TOAST UI Image Editor docs](https://nhnent.github.io/tui.image-editor/latest/ImageEditor.html)
+
+#### includeUI - boolean
+*Default:*
+```js
+true
+```
+
+Use the UI provided by default.
+
+### Outputs
+
+Eight outputs that correspond to the events in the [TOAST UI Image Editor events docs](https://nhnent.github.io/tui.image-editor/latest/ImageEditor.html#event:addText)
+
+### Accessing the editor directly.
+
+The editor instance is a public variable on the component, and can be accessed directly using the Angular ViewChild property.
+```js
+import { Component, ViewChild, AfterViewInit } from "@angular/core";
+import { ToastUiImageEditorComponent } from 'toast-ui-image-editor';
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.css"]
+})
+export class AppComponent implements AfterViewInit {
+  @ViewChild(ToastUiImageEditorComponent) editorComponent: ToastUiImageEditorComponent;
+
+  ngAfterViewInit() {
+    console.log(this.editorComponent.editorInstance);
+  }
+}
+```

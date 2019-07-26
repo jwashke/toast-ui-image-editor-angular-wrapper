@@ -1,5 +1,5 @@
-import { NgModule } from "@angular/core";
-import { ToastUiImageEditorComponent } from "./toast-ui-image-editor.component";
+import { NgModule } from '@angular/core';
+import { ToastUiImageEditorComponent } from './toast-ui-image-editor.component';
 
 @NgModule({
   imports: [],

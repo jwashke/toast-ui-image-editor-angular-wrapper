@@ -8,37 +8,32 @@ import {
   ViewChild,
   Output,
   ViewEncapsulation
-} from "@angular/core";
-import ImageEditor from "tui-image-editor";
+} from '@angular/core';
+import ImageEditor from 'tui-image-editor';
+import tuiImageEditor from 'tui-image-editor';
 
-import {
-  IAddTextEvent,
-  IMousedownEvent,
-  IGraphicObjectProps,
-  IOptions
-} from "./toast-ui-image-editor.models";
+import 'tui-image-editor/dist/svg/icon-a.svg';
+import 'tui-image-editor/dist/svg/icon-b.svg';
+import 'tui-image-editor/dist/svg/icon-c.svg';
+import 'tui-image-editor/dist/svg/icon-d.svg';
 
-import "tui-image-editor/dist/svg/icon-a.svg";
-import "tui-image-editor/dist/svg/icon-b.svg";
-import "tui-image-editor/dist/svg/icon-c.svg";
-import "tui-image-editor/dist/svg/icon-d.svg";
 
 enum editorEvents {
-  addText = "addText",
-  mousedown = "mousedown",
-  objectActivated = "objectActivated",
-  objectMoved = "objectMoved",
-  objectScaled = "objectScaled",
-  redoStackChanged = "redoStackChanged",
-  textEditing = "textEditing",
-  undoStackChanged = "undoStackChanged"
+  addText = 'addText',
+  mousedown = 'mousedown',
+  objectActivated = 'objectActivated',
+  objectMoved = 'objectMoved',
+  objectScaled = 'objectScaled',
+  redoStackChanged = 'redoStackChanged',
+  textEditing = 'textEditing',
+  undoStackChanged = 'undoStackChanged'
 }
 const includeUIOptions = {
   includeUI: {
-    initMenu: "filter"
+    initMenu: 'filter'
   }
 };
-const editorDefaultOptions: IOptions = {
+const editorDefaultOptions: tuiImageEditor.IOptions = {
   cssMaxWidth: 700,
   cssMaxHeight: 500
 };
@@ -48,33 +43,30 @@ interface IImageEditor extends ImageEditor {
 }
 
 @Component({
-  selector: "tui-image-editor",
+  selector: 'tui-image-editor',
   template: `
-    <div
-      #imageEditor
-      id="tuiImageEditor"
-      style="width: 100%;height: 100%;"
-    ></div>
+    <div #imageEditor></div>
   `,
   styleUrls: [
-    "../../../../node_modules/tui-image-editor/dist/tui-image-editor.css"
+    '../../../../node_modules/tui-color-picker/dist/tui-color-picker.css',
+    '../../../../node_modules/tui-image-editor/dist/tui-image-editor.css'
   ],
   encapsulation: ViewEncapsulation.None
 })
 export class ToastUiImageEditorComponent implements AfterViewInit, OnDestroy {
   @Input() includeUI = true;
-  @Input() options: IOptions;
+  @Input() options: tuiImageEditor.IOptions;
 
-  @Output() addText = new EventEmitter<IAddTextEvent>();
-  @Output() mousedown = new EventEmitter<IMousedownEvent>();
-  @Output() objectActivated = new EventEmitter<IGraphicObjectProps>();
-  @Output() objectMoved = new EventEmitter<IGraphicObjectProps>();
-  @Output() objectScaled = new EventEmitter<IGraphicObjectProps>();
+  @Output() addText = new EventEmitter<any>();
+  @Output() mousedown = new EventEmitter<any>();
+  @Output() objectActivated = new EventEmitter<any>();
+  @Output() objectMoved = new EventEmitter<any>();
+  @Output() objectScaled = new EventEmitter<any>();
   @Output() redoStackChanged = new EventEmitter<number>();
   @Output() textEditing = new EventEmitter<void>();
   @Output() undoStackChanged = new EventEmitter<number>();
 
-  @ViewChild("imageEditor") editorRef: ElementRef;
+  @ViewChild('imageEditor', { static: true }) editorRef: ElementRef;
 
   editorInstance: ImageEditor;
 
